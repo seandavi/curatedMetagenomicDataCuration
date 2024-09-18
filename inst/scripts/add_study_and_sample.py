@@ -49,9 +49,7 @@ def load_curated_data(f: pathlib.Path) -> pl.DataFrame:
     )
 
 
-def add_study_and_sample_info(
-    df: pl.DataFrame, df1: pl.DataFrame, f: pathlib.Path
-) -> None:
+def add_study_and_sample_info(df: pl.DataFrame, df1: pl.DataFrame) -> pl.DataFrame:
     """Add study and sample info to a curated dataframe"""
     df2 = pl.DataFrame()
     if "ncbi_accession" in df.columns:
@@ -87,8 +85,8 @@ def add_study_and_sample_info(
             )
             .join(df, on="sample_id", how="right")
         )
-    df2.write_ndjson(f.with_suffix(".ndjson"))
     assert df2.shape[0] == df.shape[0]
+    return df2
 
 
 def main() -> None:
@@ -99,7 +97,8 @@ def main() -> None:
     for f in files:
         print(f)
         df = load_curated_data(f)
-        add_study_and_sample_info(df, df1, f)
+        df2 = add_study_and_sample_info(df, df1)
+        df2.write_ndjson(f.with_suffix(".ndjson"))
 
 
 if __name__ == "__main__":
