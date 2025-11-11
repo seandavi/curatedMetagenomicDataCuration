@@ -1,0 +1,16 @@
+# Core dependencies
+pandas>=1.3.0
+numpy>=1.21.0
+
+# Optional dependencies for ontology backends
+# Uncomment the ones you need:
+
+# For local OBO ontology files:
+# pronto>=2.5.0
+
+# For BioPortal API access:
+# requests>=2.26.0
+
+# For advanced fuzzy matching (optional):
+# python-Levenshtein>=0.12.2
+# fuzzywuzzy>=0.18.0
