@@ -1,5 +1,12 @@
 """
 Setup script for the Metadata Validator Framework
+
+DEPRECATED: This file is kept for backward compatibility only.
+Please use pyproject.toml with uv or pip instead:
+    uv pip install -e .
+    pip install -e .
+
+See UV_GUIDE.md for more information about using uv (much faster!).
 """
 
 from setuptools import setup, find_packages

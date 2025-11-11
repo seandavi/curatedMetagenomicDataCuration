@@ -6,12 +6,25 @@ The Metadata Validator Framework provides comprehensive validation and harmoniza
 
 ## Installation
 
+### Using uv (Recommended - Fast!)
+
 ```bash
+# Install uv if you haven't already
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Navigate to the validator directory
 cd metadata_validator
-pip install -r requirements.txt
+
+# Create a virtual environment and install
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -e .
+
+# Or install directly without creating a venv
+uv pip install -e .
 ```
 
-Or install as a package:
+### Using pip (Alternative)
 
 ```bash
 cd metadata_validator
@@ -49,7 +62,13 @@ Run the test suite to verify installation:
 
 ```bash
 cd metadata_validator
+
+# With uv (if using venv)
+source .venv/bin/activate
 python test_validator.py
+
+# Or run directly with uv
+uv run python test_validator.py
 ```
 
 ## Key Features
@@ -102,7 +121,8 @@ metadata_validator/
 │   └── human_review_agent.py
 ├── examples/                 # Example scripts
 ├── test_validator.py         # Test suite
-├── requirements.txt          # Dependencies
+├── pyproject.toml            # Project config & dependencies (uv/pip)
+├── .python-version           # Python version for uv
 └── README.md                 # Full documentation
 ```
 

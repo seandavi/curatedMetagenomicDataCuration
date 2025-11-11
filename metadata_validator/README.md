@@ -27,28 +27,56 @@ The framework includes specialized agents that work together to improve metadata
 
 ## Installation
 
-### Basic Installation
+### Using uv (Recommended)
+
+[uv](https://github.com/astral-sh/uv) is a fast Python package installer and resolver. It's 10-100x faster than pip!
+
+**📖 See [UV_GUIDE.md](UV_GUIDE.md) for a complete guide to using uv with this project.**
 
 ```bash
+# Install uv if you haven't already
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install the package and dependencies
 cd metadata_validator
-pip install -r requirements.txt
+uv pip install -e .
+
+# Or create a virtual environment and install
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+uv pip install -e .
 ```
 
 ### Optional Dependencies
 
-For local ontology files (OBO format):
+Install with ontology support:
 ```bash
-pip install pronto
+uv pip install -e ".[ontology]"
 ```
 
-For BioPortal API access:
+Install with fuzzy matching:
 ```bash
-pip install requests
+uv pip install -e ".[fuzzy]"
 ```
 
-For enhanced fuzzy matching:
+Install all optional dependencies:
 ```bash
-pip install python-Levenshtein fuzzywuzzy
+uv pip install -e ".[all]"
+```
+
+Install development dependencies:
+```bash
+uv pip install -e ".[dev]"
+```
+
+### Using pip (Alternative)
+
+```bash
+cd metadata_validator
+pip install -e .
+
+# With optional dependencies
+pip install -e ".[all]"
 ```
 
 ## Quick Start
